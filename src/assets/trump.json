@@ -1,0 +1,234 @@
+{"frames": {
+
+"trump_run-0.png":
+{
+	"frame": {"x":0,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-1.png":
+{
+	"frame": {"x":256,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-2.png":
+{
+	"frame": {"x":512,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-3.png":
+{
+	"frame": {"x":768,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-4.png":
+{
+	"frame": {"x":1024,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-5.png":
+{
+	"frame": {"x":1280,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-6.png":
+{
+	"frame": {"x":1536,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-7.png":
+{
+	"frame": {"x":1792,"y":0,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-8.png":
+{
+	"frame": {"x":0,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-9.png":
+{
+	"frame": {"x":256,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-10.png":
+{
+	"frame": {"x":512,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-11.png":
+{
+	"frame": {"x":768,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-12.png":
+{
+	"frame": {"x":1024,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-13.png":
+{
+	"frame": {"x":1280,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-14.png":
+{
+	"frame": {"x":1536,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-15.png":
+{
+	"frame": {"x":1792,"y":249,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-16.png":
+{
+	"frame": {"x":0,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-17.png":
+{
+	"frame": {"x":256,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-18.png":
+{
+	"frame": {"x":512,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-19.png":
+{
+	"frame": {"x":768,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-20.png":
+{
+	"frame": {"x":1024,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-21.png":
+{
+	"frame": {"x":1280,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-22.png":
+{
+	"frame": {"x":1536,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+},
+"trump_run-23.png":
+{
+	"frame": {"x":1792,"y":498,"w":256,"h":249},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":249},
+	"sourceSize": {"w":256,"h":249},
+	"anchor": {"x":0,"y":0}
+}},
+"animations": {
+	"front-trump_run": ["trump_run-0.png","trump_run-1.png","trump_run-2.png","trump_run-3.png","trump_run-4.png","trump_run-5.png"],
+	"right-trump_run": ["trump_run-6.png","trump_run-7.png","trump_run-8.png","trump_run-9.png","trump_run-10.png","trump_run-11.png"],
+	"back-trump_run":  ["trump_run-12.png","trump_run-13.png","trump_run-14.png","trump_run-15.png","trump_run-16.png","trump_run-17.png"],
+	"left-trump_run": ["trump_run-18.png","trump_run-19.png","trump_run-20.png","trump_run-21.png","trump_run-22.png","trump_run-23.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "trump.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":747},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:522856efe923a93aafd96ea2bdf63807:259340a6d789ad3c777b4f9298460eb3:409655cb2a0c2b60657ba8a3533ab280$"
+}
+}
