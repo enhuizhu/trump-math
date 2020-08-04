@@ -11,25 +11,30 @@ declare var navigator: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  // @ViewChild("canvas", {read: ElementRef}) canvas: ElementRef;
   public gamepads = {};
   public message = '';
   public position = '';
-  public gameSize = {width: 1600, height: 800};
+  public gameSize = {width: window.innerWidth, height: window.innerHeight};
+  
   public directionMap = {
     up: false,
     down: false,
     left: false,
     right: false,
   };
+  
   public buttonsMap = {
     increase: false,
     decrease: false,
   }
 
-  public speed = 1;
+  public minSpeed = 2;
+  public maxSpeed = 5;
+  public speed = 2;
   public img: any;
   public app: any;
+
+  public gameStopped = false;
 
   public sheetMap = {
     'standFront': [],
@@ -45,6 +50,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public animatedTrump;
   public animatedBoom;
   public explosionTextures;
+  public question;
+
+  public operators = ['+', '-', '*'];
 
   constructor() {
     this.initListeners();
@@ -100,52 +108,98 @@ export class AppComponent implements OnInit, AfterViewInit {
       || (condition2 && (condition5 || condition6))
   }
 
+
+  initBoom() {
+    const explotionSheet = this.app.loader.resources['/assets/explotion.json'];
+    this.explosionTextures = _.map(explotionSheet.textures, (v, k) => v);
+    this.animatedBoom = new PIXI.AnimatedSprite(this.explosionTextures);
+    this.animatedBoom.anchor.set(0.5);
+    this.animatedBoom.loop = false;
+    this.animatedBoom.visible = false;
+    
+    this.animatedBoom.onComplete = () => {
+      console.log('animation complete event');
+      this.animatedBoom.visible = false;
+      this.animatedBoom.textures = this.explosionTextures;
+      this.animatedBoom.visible = false;
+    }
+
+    this.app.stage.addChild(this.animatedBoom);
+  }
+
+  initTrump() {
+    const sheet = this.app.loader.resources['/assets/trump.json'];
+    this.setSheet(sheet);
+
+    this.animatedTrump = new PIXI.AnimatedSprite(this.sheetMap.standFront);
+    this.animatedTrump.animationSpeed = 0.167;
+    this.animatedTrump.anchor.set(0.5);
+    this.animatedTrump.scale.set(0.4, 0.4);
+    this.resetTrump();
+
+    this.app.stage.addChild(this.animatedTrump);
+  }
+
+  initQuestion() {
+    this.question = new PIXI.Text('', {fontFamily: 'Arial', fontSize: '57px', fill: 'green'});
+    this.question.anchor.set(0.5);
+    this.question.x = this.gameSize.width / 2;
+    this.question.y = this.gameSize.height / 2;
+    this.setQuestion();
+    this.app.stage.addChild(this.question);
+  }
+
+  generateMathQuestion() {
+    const numbers = [1, 2, 3].map(() => {
+      return Math.round(Math.random() * 20);
+    });
+
+    const randomOperators = [1, 2].map(() => {
+      const index = Math.round(Math.random() * 2);
+      return this.operators[index];
+    });
+
+    return numbers.reduce((a, c, index) => {
+      return `${a}${c}${randomOperators[index] || ''}`;
+    }, '');
+  }
+
   loadAssets() {
     this.app.loader
       .add('/assets/trump.json')
       .add('/assets/explotion.json')
       .load(() => {
-        const sheet = this.app.loader.resources['/assets/trump.json'];
-        this.setSheet(sheet);
-        const explotionSheet = this.app.loader.resources['/assets/explotion.json'];
-        this.explosionTextures = _.map(explotionSheet.textures, (v, k) => v);
-        this.animatedBoom = new PIXI.AnimatedSprite(this.explosionTextures);
-        this.animatedBoom.anchor.set(0.5);
-        this.animatedBoom.loop = false;
-        this.animatedBoom.visible = false;
-        
-        this.animatedBoom.onComplete = () => {
-          console.log('animation complete event');
-          this.animatedBoom.visible = false;
-          this.animatedBoom.textures = this.explosionTextures;
-          this.animatedBoom.visible = false;
-        }
-
-        this.app.stage.addChild(this.animatedBoom);
+        this.initQuestion();
         this.addRandomNumbers();
-
-        this.animatedTrump = new PIXI.AnimatedSprite(this.sheetMap.standFront);
-        this.animatedTrump.animationSpeed = 0.167;
-        this.animatedTrump.anchor.set(0.5);
-        this.animatedTrump.scale.set(0.5, 0.5);
-
-        this.app.stage.addChild(this.animatedTrump);
+        this.initBoom();
+        this.initTrump();
       });    
   }
 
   addRandomNumbers() {
      const distance = Math.round(this.gameSize.width / 5);
      this.textArray = [1, 2, 3, 4].map(v => {
-       const text = new PIXI.Text(Math.round(Math.random() *100).toString(), {font: '300px Arial', fill: 'red'});
+       const text = new PIXI.Text(this.getRandomNumber(), {
+         fontFamily: 'Arial', 
+         fontSize: '60px', 
+         fill: 'red',
+         stroke: 'gray',
+         dropShadow: true,
+       });
        text.x = distance * v;
        text.y = 50;
        text.anchor.set(0.5);
        text.scale.set(1);
-       console.log('text-size', text.width, text.height, text.getBounds());
 
        this.app.stage.addChild(text);
        return text;
-     })
+     });
+
+     this.textArray[Math.round(Math.random() * (this.textArray.length - 1))].text = eval(this.question.q);
+  }
+
+  getRandomNumber() {
+    return Math.round(Math.random() *100).toString();
   }
 
   initListeners() {
@@ -176,11 +230,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.buttonsMap.increase = button.pressed && index == 0;
       this.buttonsMap.decrease = button.pressed && index == 3;
 
-      if (this.buttonsMap.increase && this.speed < 10) {
+      if (this.buttonsMap.increase && this.speed < this.maxSpeed) {
         this.speed += 1;
       }
 
-      if (this.buttonsMap.decrease && this.speed > 0) {
+      if (this.buttonsMap.decrease && this.speed > this.minSpeed) {
         this.speed -= 1;
       }
     });
@@ -235,17 +289,64 @@ export class AppComponent implements OnInit, AfterViewInit {
   checkCollision() {
     this.textArray.forEach(t => {
       if (this.touchEach(this.animatedTrump, t) && t.visible) {
-        t.visible = false;
+        const explotionObj = t.text == eval(this.question.q) ? t : this.animatedTrump;
+        explotionObj.visible = false;
         this.animatedBoom.visible = true;
-        this.animatedBoom.x = t.x;
-        this.animatedBoom.y = t.y;
+        this.animatedBoom.x = explotionObj.x;
+        this.animatedBoom.y = explotionObj.y;
         this.animatedBoom.play();
+        this.gameStopped = true;
+        this.gameStopped = true;
+        
+        setTimeout(() => {
+          if (confirm(explotionObj === this.animatedTrump ? 'you lose the game.' : 'well done!')) {
+            this.resetGame();
+          }
+        }, 500);
       }
     });
   }
 
+  resetGame() {
+    this.gameStopped = false;
+    
+    this.setQuestion();
+    this.setRandomAnswers();
+
+    this.animatedTrump.visible = true;
+    this.animatedTrump.x = this.animatedTrump.width;
+    this.animatedTrump.y = this.animatedTrump.height;
+
+    this.animatedBoom.visible = false;
+  }
+
+  resetTrump() {
+    this.animatedTrump.visible = true;
+    this.animatedTrump.x = this.animatedTrump.width;
+    this.animatedTrump.y = this.animatedTrump.height;
+  }
+
+  setQuestion() {
+    this.question.q = this.generateMathQuestion();
+    this.question.text = `${this.question.q} = ?`;
+  }
+
+  setRandomAnswers() {
+    const randomIndex = Math.round(Math.random() * 3);
+    
+    this.textArray.forEach((t, index) => {
+      t.visible = true;
+
+      if (randomIndex === index) {
+        t.text = eval(this.question.q);
+      } else {
+        t.text = this.getRandomNumber();
+      }
+    });
+  };
+
   loopGame() {
-    if (!_.isEmpty(this.gamepads)) {
+    if (!_.isEmpty(this.gamepads) && !this.gameStopped) {
       this.checkButtonPress(navigator.getGamepads()[0].buttons);
       this.checkPosition(navigator.getGamepads()[0].axes);
       this.checkCollision();
